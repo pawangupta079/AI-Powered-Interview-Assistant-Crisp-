@@ -38,6 +38,9 @@ export const useInterview = () => {
     scoreBreakdown,
   } = useSelector(state => state.interview);
 
+  // Ensure answers is always an array to avoid runtime errors when reading length
+  const safeAnswers = Array.isArray(answers) ? answers : [];
+
   // Start new interview with candidate data
   const beginInterview = useCallback((candidateData) => {
     const candidate = {
@@ -73,14 +76,14 @@ export const useInterview = () => {
 
   // Complete interview and process results
   const completeInterview = useCallback(async () => {
-    if (answers.length === 6 && currentCandidate) {
+    if (safeAnswers.length === 6 && currentCandidate) {
       try {
-        await dispatch(processInterviewCompletion(answers)).unwrap();
+        await dispatch(processInterviewCompletion(safeAnswers)).unwrap();
       } catch (error) {
         console.error('Failed to complete interview:', error);
       }
     }
-  }, [dispatch, answers, currentCandidate]);
+  }, [dispatch, safeAnswers, currentCandidate]);
 
   // Timer controls
   const pauseInterviewTimer = useCallback(() => {
@@ -155,10 +158,10 @@ export const useInterview = () => {
 
   // Auto-complete interview when all questions answered
   useEffect(() => {
-    if (answers.length === 6 && !interviewInProgress && !showResults) {
+    if (safeAnswers.length === 6 && !interviewInProgress && !showResults) {
       completeInterview();
     }
-  }, [answers.length, interviewInProgress, showResults, completeInterview]);
+  }, [safeAnswers.length, interviewInProgress, showResults, completeInterview]);
 
   // Safely handle scheduled auto-advance between questions
   useEffect(() => {
@@ -182,7 +185,7 @@ export const useInterview = () => {
     currentQuestionIndex,
     currentQuestion,
     currentDifficulty,
-    answers,
+    answers: safeAnswers,
     timeRemaining,
     timerActive,
     isProcessing,
