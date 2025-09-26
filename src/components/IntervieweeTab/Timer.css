@@ -1,0 +1,265 @@
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.timer-display {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+  transition: all var(--transition-fast);
+  border: 2px solid transparent;
+}
+
+.timer-small .timer-display {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+}
+
+.timer-medium .timer-display {
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-size-md);
+}
+
+.timer-large .timer-display {
+  padding: var(--space-lg) var(--space-xl);
+  font-size: var(--font-size-lg);
+}
+
+.timer-normal {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+.timer-warning {
+  background-color: var(--color-warning);
+  color: var(--color-white);
+  animation: timer-pulse-warning 2s ease-in-out infinite;
+}
+
+.timer-danger {
+  background-color: var(--color-error);
+  color: var(--color-white);
+  animation: timer-pulse-danger 1s ease-in-out infinite;
+}
+
+@keyframes timer-pulse-warning {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(255, 152, 0, 0);
+  }
+}
+
+@keyframes timer-pulse-danger {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(244, 67, 54, 0);
+  }
+}
+
+.timer-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.timer-time {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+}
+
+.timer-pulse {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid var(--color-error);
+  border-radius: var(--radius-lg);
+  animation: timer-pulse-ring 1s ease-out infinite;
+}
+
+@keyframes timer-pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* Circular variant */
+.timer-circular {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.timer-circle {
+  position: absolute;
+  transform: rotate(-90deg);
+}
+
+.timer-circle-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 4;
+}
+
+.timer-circle-progress {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--transition-normal);
+}
+
+.timer-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: var(--font-size-xs);
+}
+
+.timer-text .timer-time {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Linear variant */
+.timer-linear .timer-display {
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.timer-progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.timer-progress-fill {
+  height: 100%;
+  background-color: currentColor;
+  transition: width var(--transition-normal);
+  border-radius: 2px;
+}
+
+/* Timer controls */
+.timer-controls {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.timer-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.timer-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.timer-btn:active {
+  transform: scale(0.95);
+}
+
+/* Timer warning message */
+.timer-warning {
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+  animation: timer-blink 1s ease-in-out infinite;
+}
+
+@keyframes timer-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .timer-container {
+    gap: var(--space-xs);
+  }
+
+  .timer-large .timer-display {
+    padding: var(--space-md) var(--space-lg);
+    font-size: var(--font-size-md);
+  }
+
+  .timer-circular {
+    width: 60px;
+    height: 60px;
+  }
+
+  .timer-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .timer-circle-bg,
+  .timer-circle-progress {
+    stroke-width: 3;
+    r: 27;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .timer-warning,
+  .timer-danger,
+  .timer-pulse,
+  .timer-progress-fill,
+  .timer-circle-progress {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .timer-display {
+    border: 2px solid currentColor;
+  }
+
+  .timer-circle-bg {
+    stroke: currentColor;
+    opacity: 0.3;
+  }
+}

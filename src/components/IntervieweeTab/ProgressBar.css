@@ -1,0 +1,317 @@
+.progress-bar-container {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+}
+
+.progress-label {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.progress-count {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.progress-track {
+  height: 8px;
+  background-color: var(--color-gray-200);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: var(--space-xl);
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  border-radius: 4px;
+  transition: width var(--transition-normal);
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: progress-shimmer 2s ease-in-out infinite;
+}
+
+@keyframes progress-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  position: relative;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.progress-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 60%;
+  right: -40%;
+  height: 2px;
+  background-color: var(--color-gray-200);
+  z-index: -1;
+}
+
+.progress-step.completed:not(:last-child)::after {
+  background-color: var(--color-primary);
+}
+
+.step-indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+}
+
+.step-icon {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-full);
+  padding: 2px;
+}
+
+.step-icon.completed {
+  color: var(--color-success);
+}
+
+.step-icon.current {
+  color: var(--color-primary);
+  animation: step-pulse 2s ease-in-out infinite;
+}
+
+.step-icon.pending {
+  color: var(--color-gray-300);
+}
+
+@keyframes step-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.step-number {
+  position: absolute;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  background-color: currentColor;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-xs);
+}
+
+.step-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.step-difficulty {
+  font-size: var(--font-size-xs);
+  padding: 2px var(--space-xs);
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.progress-step.completed .step-difficulty {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: var(--color-success);
+}
+
+.progress-step.current .step-difficulty {
+  background-color: rgba(45, 156, 219, 0.1);
+  color: var(--color-primary);
+}
+
+.progress-step.pending .step-difficulty {
+  background-color: var(--color-gray-100);
+  color: var(--color-text-muted);
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-around;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.stat-value {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+.stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Compact variant */
+.progress-compact {
+  padding: var(--space-md);
+}
+
+.progress-compact .progress-header {
+  margin-bottom: var(--space-md);
+}
+
+.progress-compact .progress-track {
+  margin-bottom: var(--space-lg);
+}
+
+.progress-compact .step-content {
+  display: none;
+}
+
+.progress-compact .progress-steps {
+  margin-bottom: var(--space-md);
+}
+
+/* Minimal variant */
+.progress-minimal .progress-header,
+.progress-minimal .progress-stats,
+.progress-minimal .step-content {
+  display: none;
+}
+
+.progress-minimal {
+  padding: var(--space-md);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .progress-steps {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .progress-step {
+    min-width: 80px;
+  }
+
+  .progress-step:not(:last-child)::after {
+    display: none;
+  }
+
+  .step-label {
+    font-size: var(--font-size-xs);
+  }
+
+  .progress-stats {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .stat-item {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-header {
+    flex-direction: column;
+    gap: var(--space-xs);
+    text-align: center;
+  }
+
+  .step-content {
+    display: none;
+  }
+
+  .progress-stats {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .stat-item {
+    flex-direction: column;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill::after,
+  .step-icon.current {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .progress-track {
+    border: 1px solid var(--color-text-primary);
+  }
+
+  .step-indicator {
+    border: 2px solid currentColor;
+    border-radius: var(--radius-full);
+  }
+}

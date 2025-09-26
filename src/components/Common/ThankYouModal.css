@@ -1,0 +1,25 @@
+.ty-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.ty-modal {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow-lg);
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.ty-text { color: var(--color-text-secondary); margin-top: 6px; }
+
+.ty-actions { display: flex; justify-content: center; margin-top: 14px; }

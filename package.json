@@ -1,0 +1,46 @@
+{
+  "name": "ai-interview-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-Powered Interview Assistant for Swipe Internship Assignment",
+  "author": "Your Name",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.1",
+    "react-redux": "^8.1.1",
+    "redux-persist": "^6.0.0",
+    "@reduxjs/toolkit": "^1.9.5",
+    "uuid": "^9.0.0",
+    "file-saver": "^2.0.5",
+    "pdf-parse": "^1.1.1",
+    "mammoth": "^1.6.0",
+    "lucide-react": "^0.263.1",
+    "react-hot-toast": "^2.4.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage": "https://yourusername.github.io/ai-interview-assistant"
+}

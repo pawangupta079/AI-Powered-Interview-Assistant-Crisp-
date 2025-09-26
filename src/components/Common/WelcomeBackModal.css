@@ -1,0 +1,36 @@
+.wb-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.wb-modal {
+  width: 100%;
+  max-width: 520px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 20px;
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.wb-subtitle { color: var(--color-text-secondary); margin: 6px 0 12px; }
+.wb-text { color: var(--color-text-secondary); }
+
+.wb-status { margin-bottom: 8px; }
+.wb-chip {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  background: var(--color-surface-secondary);
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+
+.wb-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; }

@@ -1,0 +1,141 @@
+.candidate-list-container {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.candidate-table {
+  width: 100%;
+}
+
+.table-header, .table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 12px;
+  padding: 12px 16px;
+  align-items: center;
+}
+
+.table-header {
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.table-row {
+  border-bottom: 1px solid var(--color-border-light);
+  cursor: pointer;
+}
+
+.table-row:hover {
+  background: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+}
+
+/* Force all descendants to keep visible text color on hover */
+.table-row:hover * {
+  color: var(--color-text-primary) !important;
+}
+
+/* Keep all cell text readable on hover */
+.table-row:hover .candidate-name,
+.table-row:hover .candidate-email,
+.table-row:hover .score-badge,
+.table-row:hover .status-cell,
+.table-row:hover .status-cell .status-label,
+.table-row:hover .no-score {
+  color: var(--color-text-primary);
+}
+
+/* Ensure the avatar and controls keep contrast on hover */
+.table-row:hover .candidate-avatar {
+  background: var(--color-gray-100);
+  color: var(--color-primary);
+}
+
+.table-row:hover .actions-cell .view-btn {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+/* Score badge contrast on hover */
+.table-row:hover .score-badge {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.candidate-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.candidate-avatar {
+  height: 32px;
+  width: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--color-gray-100);
+  color: var(--color-primary);
+}
+
+.candidate-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.candidate-name { font-weight: 600; }
+.candidate-email { font-size: 12px; color: var(--color-text-secondary); }
+
+.score-badge {
+  min-width: 40px;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  background: var(--color-gray-100);
+}
+
+.score-badge.excellent { background: #dcfce7; }
+.score-badge.good { background: #e0f2fe; }
+.score-badge.average { background: #fef3c7; }
+.score-badge.poor { background: #fee2e2; }
+
+.status-cell { display: inline-flex; align-items: center; gap: 8px; }
+.status-icon.completed { color: var(--color-success); }
+.status-icon.in-progress { color: var(--color-primary); }
+.status-icon.pending { color: var(--color-warning); }
+
+.no-score { color: var(--color-gray-300); }
+
+.actions-cell .view-btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.actions-cell .view-btn:hover { background: var(--color-surface-secondary); }
+
+.actions-cell {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.actions-cell .delete-btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-error);
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.actions-cell .delete-btn:hover {
+  filter: brightness(0.95);
+}
